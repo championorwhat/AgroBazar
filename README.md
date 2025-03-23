@@ -21,7 +21,7 @@ Small-scale farmers form the backbone of global food production, contributing si
 - Many farmers lack digital tools to sell directly to consumers.
 
 ### D. Unsustainable Agricultural Practices
-- Without stable income, farmers struggle to invest in sustainable farming methods.
+- Without a stable income, farmers struggle to invest in sustainable farming methods.
 - Unsustainable farming leads to soil degradation and increased carbon footprints.
 
 ## Issues with Existing eCommerce Solutions
