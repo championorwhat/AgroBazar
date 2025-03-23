@@ -1,8 +1,21 @@
-import  { Cloud, Sun, Wind, Droplets } from 'lucide-react';
-import { type WeatherInfo } from '../types';
+import { Cloud, Sun, Wind, Droplets } from 'lucide-react';
+import { type WeatherInfo } from '../types'; // Importing WeatherInfo type
 
 interface WeatherWidgetProps {
   weather: WeatherInfo;
+}
+
+function getWeatherIcon(condition: string) {
+  switch (condition.toLowerCase()) {
+    case 'sunny':
+      return <Sun className="h-8 w-8 text-yellow-500" />; // Return sun icon for default condition
+    case 'cloudy':
+      return <Cloud className="h-8 w-8 text-gray-500" />;
+    case 'windy':
+      return <Wind className="h-8 w-8 text-blue-500" />;
+    default:
+      return <Sun className="h-8 w-8 text-yellow-500" />; // Default to sunny
+  }
 }
 
 export default function WeatherWidget({ weather }: WeatherWidgetProps) {
@@ -10,7 +23,7 @@ export default function WeatherWidget({ weather }: WeatherWidgetProps) {
     <div className="bg-white rounded-lg shadow-md p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <Sun className="h-8 w-8 text-yellow-500" />
+          {getWeatherIcon(weather.condition)} {/* Display the appropriate weather icon */}
           <div>
             <h3 className="text-xl font-semibold">{weather.temperature}°C</h3>
             <p className="text-gray-600">{weather.condition}</p>
@@ -30,4 +43,3 @@ export default function WeatherWidget({ weather }: WeatherWidgetProps) {
     </div>
   );
 }
- 

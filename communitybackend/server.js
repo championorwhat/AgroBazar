@@ -1,4 +1,6 @@
 import express from 'express';
+import http from 'http';  // Required for Socket.IO
+import { Server } from 'socket.io';  // Importing Socket.IO
 import path from 'path';
 import cors from 'cors';
 import axios from 'axios';
@@ -14,6 +16,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+const server = http.createServer(app); // Create HTTP server for Socket.IO
+const io = new Server(server, {
+    cors: {
+        origin: "*", // Allow all origins (change if needed)
+        methods: ["GET", "POST"]
+    }
+});
+
 const PORT = process.env.PORT || 5000;
 
 // Middleware
@@ -45,28 +55,74 @@ testDBConnection();
 
 // ✅ Weather API Route
 app.get('/api/weather', async (req, res) => {
-    const city = req.query.city || 'Delhi'; // Default city
+    let city = req.query.city || 'Delhi'; // Default city is 'Delhi'
+
+    // Validate city name
+    if (!/^[a-zA-Z\s]+$/.test(city)) {
+        return res.status(400).json({ message: 'Invalid city name' });
+    }
+
     try {
-        const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&units=metric`
-        );
-        res.json({
-            location: response.data.name,
-            temperature: response.data.main.temp,
-            condition: response.data.weather[0].description,
-            humidity: response.data.main.humidity,
-            windSpeed: response.data.wind.speed,
-        });
+        const apiKey = process.env.WEATHER_API_KEY;
+        if (!apiKey) {
+            throw new Error('Weather API key is missing in .env file');
+        }
+
+        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
+
+        const response = await axios.get(weatherURL);
+        const { name, main, weather, wind } = response.data;
+
+        const weatherData = {
+            location: name,
+            temperature: main.temp,
+            condition: weather[0].description,
+            humidity: main.humidity,
+            windSpeed: wind.speed,
+        };
+
+        // Emit weather data via WebSocket to all connected clients
+        io.emit("weatherUpdate", weatherData);
+
+        res.json(weatherData);
     } catch (error) {
         console.error('❌ Error fetching weather data:', error.response ? error.response.data : error.message);
+        
+        // Handle OpenWeatherMap API errors
+        if (error.response) {
+            if (error.response.status === 404) {
+                return res.status(404).json({ message: 'City not found' });
+            } else if (error.response.status === 401) {
+                return res.status(401).json({ message: 'Invalid API key' });
+            }
+        }
+
         res.status(500).json({ message: 'Error fetching weather data' });
     }
+});
+
+// ✅ Community Chat using Socket.IO
+io.on("connection", (socket) => {
+    console.log("🟢 A user connected:", socket.id);
+
+    // Listen for new messages
+    socket.on("sendMessage", (message) => {
+        console.log("📩 New message:", message);
+
+        // Broadcast the message to all clients
+        io.emit("receiveMessage", message);
+    });
+
+    // Handle user disconnect
+    socket.on("disconnect", () => {
+        console.log("🔴 A user disconnected:", socket.id);
+    });
 });
 
 // ✅ Serve Static Frontend Files (If Needed)
 app.use(express.static(path.join(__dirname, '../Farmer\'s Direct Marketplace_files')));
 
 // ✅ Start Server
-app.listen(PORT, () => { 
+server.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });

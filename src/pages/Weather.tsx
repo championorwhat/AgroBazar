@@ -1,5 +1,6 @@
-import  { useState } from 'react';
-import { Search, MapPin, Cloud, Sun, Moon, CloudRain, Wind, Droplets, ThermometerSun } from 'lucide-react';
+import { useState } from 'react';
+import axios from 'axios'; // Importing axios for HTTP requests
+import { Search, MapPin, Cloud, Sun, Moon, CloudRain, Wind, Droplets, ThermometerSun } from 'lucide-react'; // Importing Moon icon
 import { type WeatherInfo } from '../types';
 
 interface Forecast {
@@ -15,46 +16,7 @@ interface LocationWeather extends WeatherInfo {
   forecast: Forecast[];
 }
 
-// Mock data - in real app, this would come from a weather API
-const mockWeatherData: LocationWeather = {
-  location: "Mumbai, Maharashtra",
-  temperature: 32,
-  condition: "Partly Cloudy",
-  humidity: 75,
-  windSpeed: 12,
-  forecast: [
-    {
-      date: "Tomorrow",
-      temp: { min: 26, max: 33 },
-      condition: "Sunny",
-      humidity: 70,
-      windSpeed: 10
-    },
-    {
-      date: "Wednesday",
-      temp: { min: 25, max: 31 },
-      condition: "Cloudy",
-      humidity: 80,
-      windSpeed: 15
-    },
-    {
-      date: "Thursday",
-      temp: { min: 24, max: 30 },
-      condition: "Rain",
-      humidity: 85,
-      windSpeed: 18
-    },
-    {
-      date: "Friday",
-      temp: { min: 25, max: 32 },
-      condition: "Partly Cloudy",
-      humidity: 75,
-      windSpeed: 12
-    }
-  ]
-};
-
-const getWeatherIcon = (condition: string) => {
+const getWeatherIcon = (condition: string) => { // Updated to include night condition
   switch (condition.toLowerCase()) {
     case 'sunny':
       return <Sun className="h-8 w-8 text-yellow-500" />;
@@ -64,6 +26,8 @@ const getWeatherIcon = (condition: string) => {
       return <CloudRain className="h-8 w-8 text-blue-500" />;
     case 'partly cloudy':
       return <Cloud className="h-8 w-8 text-gray-400" />;
+    case 'night':
+      return <Moon className="h-8 w-8 text-gray-500" />;
     default:
       return <Sun className="h-8 w-8 text-yellow-500" />;
   }
@@ -71,12 +35,25 @@ const getWeatherIcon = (condition: string) => {
 
 export default function Weather() {
   const [location, setLocation] = useState('');
-  const [weather, setWeather] = useState<LocationWeather>(mockWeatherData);
+  const [weather, setWeather] = useState<LocationWeather>({
+    location: "",
+    temperature: 0,
+    condition: "",
+    humidity: 0,
+    windSpeed: 0,
+    forecast: [], // This will now be populated with the 5-day forecast data
+  });
   const [recentLocations] = useState(['Delhi', 'Bangalore', 'Chennai']);
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock search - in real app, this would fetch from weather API
+    try {
+      const response = await axios.get<LocationWeather>(`http://localhost:5000/api/weather?city=${location}`);
+      console.log('Weather API Response:', response.data); // Log the response data for debugging
+      setWeather(response.data);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+    }
     console.log('Searching weather for:', location);
   };
 
@@ -121,7 +98,7 @@ export default function Weather() {
               <h2 className="text-2xl font-bold">{weather.location}</h2>
               <p className="text-gray-600">Current Weather</p>
             </div>
-            {getWeatherIcon(weather.condition)}
+            {getWeatherIcon(weather.condition)} {/* Display the appropriate weather icon */}
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -152,30 +129,30 @@ export default function Weather() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold mb-4">5-Day Forecast</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {weather.forecast.map((day) => (
-              <div key={day.date} className="bg-gray-50 p-4 rounded-lg">
-                <p className="font-medium mb-2">{day.date}</p>
-                <div className="flex items-center justify-between mb-2">
-                  {getWeatherIcon(day.condition)}
-                  <div className="text-right">
-                    <p className="text-sm text-gray-600">
-                      {day.temp.min}° - {day.temp.max}°
-                    </p>
-                    <p className="text-sm text-gray-500">{day.condition}</p>
+            {weather.forecast && weather.forecast.length > 0 ? (
+              weather.forecast.map((day, index) => (
+                <div key={index} className="bg-gray-50 p-4 rounded-lg">
+                  <p className="font-medium mb-2">{day.date}</p>
+                  <div className="flex items-center justify-between mb-2">
+                    {getWeatherIcon(day.condition)}
+                    <div className="text-right">
+                      <p className="text-sm text-gray-600">
+                        {day.temp.min}° - {day.temp.max}°
+                      </p>
+                      <p className="text-sm text-gray-500">{day.condition}</p>
+                    </div>
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    <p>Humidity: {day.humidity}%</p>
+                    <p>Wind: {day.windSpeed} km/h</p>
                   </div>
                 </div>
-                <div className="text-sm text-gray-600">
-                  <p>Humidity: {day.humidity}%</p>
-                  <p>Wind: {day.windSpeed} km/h</p>
-                </div>
-              </div>
-            ))}
+              ))
+            ) : null} {/* Removed the message for no forecast data */}
           </div>
         </div>
       </div>
     </div>
   );
 }
- 

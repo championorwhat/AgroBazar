@@ -1,0 +1,259 @@
+{
+  "General FAQs": [
+    {
+      "question": "Who are you?",
+      "answer": "Hi I am your friend , I am here to help you with your questions and concerns."
+    },
+    {
+      "question": "What can you do?",
+      "answer": "Hi I am here to guide you with our platform and answer all your queries in the most efficient manner"
+    },
+    {
+      "question": "What is AgroBazar?",
+      "answer": "AgroBazar is an online marketplace that connects farmers directly with buyers, ensuring fresh and quality produce at fair prices. It enables farmers to sell their crops without middlemen and helps consumers get fresh farm products conveniently."
+    },
+    {
+      "question": "How does AgroBazar benefit farmers?",
+      "answer": "AgroBazar provides farmers with a direct sales platform, reducing dependency on middlemen. It offers fair pricing, digital payments, demand forecasting, and logistical support to ensure smooth transactions."
+    },
+    {
+      "question": "Who can use AgroBazar?",
+      "answer": "AgroBazar is for farmers looking to sell their produce, wholesalers and retailers seeking fresh farm products, and consumers interested in buying organic food directly from farms."
+    },
+    {
+      "question": "Is there a mobile app available for AgroBazar?",
+      "answer": "Yes, AgroBazar has a mobile app available for both Android and iOS users. You can download it from the Play Store or App Store."
+    },
+    {
+      "question": "What makes AgroBazar different from other eCommerce platforms?",
+      "answer": "AgroBazar is specifically designed for small-scale farmers with a user-friendly interface, lower commission rates, integrated logistics support, real-time market price information, and multilingual support to overcome digital literacy barriers."
+    },
+    {
+      "question": "Is AgroBazar available in my region?",
+      "answer": "AgroBazar is expanding its operations across multiple regions. Please check our coverage map in the app or website to see if we currently serve your location."
+    },
+    {
+      "question": "How does AgroBazar ensure product quality?",
+      "answer": "We have a quality assurance team that verifies farmers' products, conducts occasional farm visits, and maintains a rating system based on buyer feedback to ensure high-quality products."
+    },
+    {
+      "question": "Does AgroBazar support organic farming?",
+      "answer": "Yes, AgroBazar actively promotes organic farming by providing special visibility to organic products and offering resources and training on organic farming methods."
+    }
+  ],
+  
+  "Registration & Account": [
+    {
+      "question": "How do I create an account on AgroBazar?",
+      "answer": "To create an account, visit our website or mobile app, click on 'Sign Up,' enter your details, and verify via OTP sent to your registered mobile number or email."
+    },
+    {
+      "question": "What documents are required to register as a farmer?",
+      "answer": "Farmers need to provide a government-issued ID (e.g., Aadhar, PAN card), land ownership proof, and bank account details for payments."
+    },
+    {
+      "question": "Can retailers register on AgroBazar?",
+      "answer": "Yes, retailers and wholesalers can register as buyers to purchase bulk farm produce."
+    },
+    {
+      "question": "I forgot my password. How can I reset it?",
+      "answer": "Click on 'Forgot Password' on the login page, enter your registered email or phone number, and follow the instructions to reset your password."
+    },
+    {
+      "question": "How do I update my profile information?",
+      "answer": "Log into your account, navigate to 'My Profile,' click on 'Edit Profile,' make the necessary changes, and save the updates."
+    },
+    {
+      "question": "Can I have multiple farms registered under one account?",
+      "answer": "Yes, farmers can register multiple farms under a single account. Go to 'My Farms' section and select 'Add New Farm' to register additional farming locations."
+    },
+    {
+      "question": "How do I verify my phone number?",
+      "answer": "During registration or when updating contact information, an OTP will be sent to your phone. Enter this code in the provided field to verify your number."
+    },
+    {
+      "question": "Can I change my registered email address?",
+      "answer": "Yes, go to 'Account Settings,' select 'Change Email,' enter your new email address, and verify it through the confirmation link sent to the new email."
+    },
+    {
+      "question": "How can I delete my account?",
+      "answer": "To delete your account, go to 'Account Settings,' scroll to the bottom, click on 'Delete Account,' and follow the confirmation steps. Note that this action is irreversible."
+    },
+    {
+      "question": "Is my personal information secure?",
+      "answer": "Yes, AgroBazar employs robust encryption and security measures to protect your personal information. We never share your data with unauthorized third parties."
+    }
+  ],
+
+  "Ordering & Products": [
+    {
+      "question": "How do I place an order?",
+      "answer": "Browse products, add items to your cart, and proceed to checkout. Choose a payment method and confirm your order."
+    },
+    {
+      "question": "What types of products can I buy on AgroBazar?",
+      "answer": "You can buy fresh vegetables, fruits, grains, dairy products, poultry, and organic farm produce."
+    },
+    {
+      "question": "Can I order in bulk?",
+      "answer": "Yes, bulk ordering is available for retailers and wholesalers at discounted rates."
+    },
+    {
+      "question": "How do farmers list their products?",
+      "answer": "Farmers can list products by logging into their seller dashboard, uploading images, adding descriptions, setting prices, and choosing delivery options."
+    },
+    {
+      "question": "Can I edit or cancel my order?",
+      "answer": "Orders can be edited or canceled before they are dispatched. Once shipped, cancellation is not possible."
+    },
+    {
+      "question": "How do I search for specific products?",
+      "answer": "Use the search bar at the top of the page to find specific products. You can also filter results by category, price range, farm type, and location."
+    },
+    {
+      "question": "Can I save favorite products for later?",
+      "answer": "Yes, click the heart icon near any product to add it to your favorites. Access your favorite items anytime from your account dashboard."
+    },
+    {
+      "question": "How do I check product availability?",
+      "answer": "Each product listing shows current availability. If an item is out of stock, you can select 'Notify Me' to receive an alert when it becomes available again."
+    },
+    {
+      "question": "Are there seasonal products available?",
+      "answer": "Yes, AgroBazar features seasonal products. Visit our 'Seasonal Specials' section to find what's currently in season."
+    },
+    {
+      "question": "Can I schedule recurring orders?",
+      "answer": "Yes, you can set up subscription orders for regular deliveries. Select the product, click 'Subscribe,' and choose your preferred frequency (weekly, bi-weekly, or monthly)."
+    },
+    {
+      "question": "How fresh are the products?",
+      "answer": "Most products are harvested only after receiving orders, ensuring maximum freshness. Each product listing shows an estimated harvest date."
+    },
+    {
+      "question": "Can I buy directly from specific farmers?",
+      "answer": "Yes, you can browse farmer profiles and choose to purchase exclusively from selected farmers you trust."
+    }
+  ],
+
+  "Payments & Pricing": [
+    {
+      "question": "What payment methods are accepted?",
+      "answer": "We accept UPI, debit/credit cards, net banking, and cash on delivery (COD) for select locations."
+    },
+    {
+      "question": "Are there any service charges?",
+      "answer": "There are no service charges for buyers. A minimal transaction fee is charged to farmers on successful sales."
+    },
+    {
+      "question": "Is my payment information secure?",
+      "answer": "Yes, we use end-to-end encryption and secure payment gateways to protect your transaction details."
+    },
+    {
+      "question": "Can I pay in installments?",
+      "answer": "Currently, installment payments are not available, but we are working on introducing flexible payment options soon."
+    },
+    {
+      "question": "How are product prices determined?",
+      "answer": "Farmers set their own prices based on their costs, market rates, and quality. Our platform provides pricing guidance based on current market trends."
+    },
+    {
+      "question": "Do you offer discounts or promotional offers?",
+      "answer": "Yes, we regularly run seasonal promotions, bulk purchase discounts, and special offers. Check the 'Offers' section for current deals."
+    },
+    {
+      "question": "What happens if there's a payment failure?",
+      "answer": "If your payment fails, the order will not be processed. You'll receive a notification and can try again with the same or different payment method."
+    },
+    {
+      "question": "Can farmers offer discounts on their products?",
+      "answer": "Yes, farmers can create custom discount offers for their products through their seller dashboard."
+    },
+    {
+      "question": "How do I get a tax invoice for my purchase?",
+      "answer": "Tax invoices are automatically generated for all purchases and can be downloaded from the 'My Orders' section in your account."
+    },
+    {
+      "question": "Are there any subscription fees to use AgroBazar?",
+      "answer": "Basic accounts are free for both farmers and buyers. Premium accounts with additional features are available for a monthly subscription fee."
+    }
+  ],
+
+  "Delivery & Logistics": [
+    {
+      "question": "How does delivery work?",
+      "answer": "Orders are picked up from farmers and delivered directly to customers via our logistics partners."
+    },
+    {
+      "question": "What is the estimated delivery time?",
+      "answer": "Delivery time varies depending on location, typically ranging from 2 to 5 days."
+    },
+    {
+      "question": "Can I track my order?",
+      "answer": "Yes, you will receive tracking details via SMS or email once your order is dispatched."
+    },
+    {
+      "question": "Do you deliver to rural areas?",
+      "answer": "Yes, we cover both urban and rural areas with our wide delivery network."
+    },
+    {
+      "question": "What happens if my order is delayed?",
+      "answer": "If there is a delay, you will be notified with the expected new delivery time. If it's a long delay, you may choose to cancel the order."
+    },
+    {
+      "question": "Is there a minimum order value for delivery?",
+      "answer": "Yes, the minimum order value for free delivery is ₹500. Orders below this amount incur a small delivery fee based on distance."
+    },
+    {
+      "question": "How are perishable items kept fresh during delivery?",
+      "answer": "We use specialized temperature-controlled packaging for perishable items to maintain freshness throughout transit."
+    },
+    {
+      "question": "Can I change my delivery address after placing an order?",
+      "answer": "Address changes can be requested before the order is dispatched. Contact customer support immediately with your order ID and new address."
+    },
+    {
+      "question": "What if I'm not available to receive my delivery?",
+      "answer": "Our delivery partners will attempt delivery three times. You can also schedule a preferred delivery time or authorize someone else to receive your order."
+    },
+    {
+      "question": "Do you offer same-day delivery?",
+      "answer": "Same-day delivery is available for select products in certain urban areas if orders are placed before 10 AM."
+    },
+    {
+      "question": "Can farmers use their own transportation?",
+      "answer": "Yes, farmers with their own transportation can opt to self-deliver and receive an additional percentage of the sales price."
+    },
+    {
+      "question": "How are delivery zones determined?",
+      "answer": "Delivery zones are based on distance from farms and our logistics network coverage. Enter your location to see available products in your area."
+    }
+  ],
+
+  "Returns & Refunds": [
+    {
+      "question": "Can I return a product?",
+      "answer": "Yes, returns are accepted if the product is damaged, spoiled, or not as described. Return requests must be made within 24 hours of delivery."
+    },
+    {
+      "question": "How do I request a refund?",
+      "answer": "Go to 'My Orders,' select the item, click 'Request Refund,' and provide a reason. Refunds are processed within 5-7 business days."
+    },
+    {
+      "question": "What if I receive the wrong product?",
+      "answer": "If you receive the wrong product, report it immediately via our app or customer support, and we will arrange a replacement."
+    },
+    {
+      "question": "Do I need to return the product to get a refund?",
+      "answer": "In most cases, you'll need to return the product. For perishable items that are spoiled or damaged, we may issue a refund without requiring a return after verification."
+    },
+    {
+      "question": "Who pays for return shipping?",
+      "answer": "Return shipping is free for valid return reasons (damaged, incorrect, or spoiled products). For preference-based returns, shipping costs may apply."
+    },
+    {
+      "question": "Can I exchange instead of returning?",
+      "answer": "Yes, you can request an exchange for a similar product of equal or higher value (paying the difference if applicable)."
+    }
+  ]
+}
