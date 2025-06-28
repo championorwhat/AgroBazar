@@ -3,16 +3,10 @@ import json
 from googletrans import Translator
 from rapidfuzz import process, fuzz  
 
-# ✅ FIX: Check if `CSI.json` Exists & Handle Errors
-JSON_PATH = r"C:\Users\aritra basak\OneDrive\Desktop\farmer_final\chat\CSI.json"
-
+# ✅ Load JSON Data
 def load_data():
-    if not os.path.exists(JSON_PATH):
-        print(f"❌ ERROR: CSI.json not found at {JSON_PATH}")
-        return {}  # Return empty dictionary if file is missing
-
     try:
-        with open(JSON_PATH, "r", encoding="utf-8") as file:
+        with open(r"C:\Users\aritra basak\OneDrive\Desktop\farmer_final\chat\CSI.json", "r", encoding="utf-8") as file:
             data = json.load(file)
             print("✅ JSON Loaded Successfully! Total Questions:", sum(len(v) for v in data.values()))
             return data
@@ -23,12 +17,11 @@ def load_data():
 data = load_data()
 translator = Translator()
 
-# ✅ Translate Text Function (Synchronous)
+# ✅ Translate Text Function
 def translate_text(text, target_language="en"):
     """Translates text to the target language using Google Translate."""
     try:
-        translation = translator.translate(text, dest=target_language)
-        return translation.text
+        return translator.translate(text, dest=target_language).text
     except Exception as e:
         print(f"❌ Translation Error: {e}")
         return text  # Return original text if translation fails
@@ -39,16 +32,13 @@ def fetch_answer(user_query, user_lang="en"):
     translated_query = translate_text(user_query, "en")  # Translate to English
     print(f"🔤 Translated Query: {translated_query}")  
 
-    if not data:
-        return translate_text("Sorry, the chatbot database is not available.", user_lang)
+    questions_answers = []
 
-    questions_answers = [
-        (faq["question"].lower(), faq["answer"])
-        for category, faqs in data.items()
-        if isinstance(faqs, list)
-        for faq in faqs
-        if isinstance(faq, dict) and "question" in faq and "answer" in faq
-    ]
+    for category, faqs in data.items():
+        if isinstance(faqs, list):
+            for faq in faqs:
+                if isinstance(faq, dict) and "question" in faq and "answer" in faq:
+                    questions_answers.append((faq["question"].lower(), faq["answer"]))
 
     if questions_answers:
         best_match = process.extractOne(

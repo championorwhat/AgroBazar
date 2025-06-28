@@ -74,7 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function testApiConnection() {
         try {
-            const response = await fetch('http://localhost:5000/api/test');
+            const response = await fetch('http://localhost:5000/api/test', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             const data = await response.json();
             console.log('API Test:', data);
             return data.status === 'API is working!';

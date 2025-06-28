@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AgroBazar
 
 ## Introduction
@@ -58,3 +59,6 @@ AgroBazar aims to solve these challenges through:
 
 ## Conclusion
 By implementing AgroBazar, we aim to empower small-scale farmers, increase their earnings, enhance food supply chain efficiency, and contribute to a sustainable agricultural economy.
+=======
+# AgroBaazar_v1
+>>>>>>> 7d5445f37ea9404ebc2e4dee2d9b3f4d8de3a53b

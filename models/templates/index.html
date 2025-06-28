@@ -1,0 +1,28 @@
+<form>
+    <div class="form-group">
+        <label for="crop_type">Crop Type</label>
+        <select name="crop_type" id="crop_type" required>
+            <option value="Wheat">Wheat</option>
+            <option value="Rice">Rice</option>
+            <option value="Maize">Maize</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="soil_type">Soil Type</label>
+        <select name="soil_type" id="soil_type" required>
+            <option value="Loamy">Loamy</option>
+            <option value="Sandy">Sandy</option>
+            <option value="Clay">Clay</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="rainfall">Rainfall (mm)</label>
+        <input type="number" name="rainfall" id="rainfall" required>
+    </div>
+    <div class="form-group">
+        <label for="temperature">Temperature (°C)</label>
+        <input type="number" name="temperature" id="temperature" required>
+    </div>
+    <button type="submit">Predict Yield</button>
+</form>
+<div id="prediction-result"></div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yield Prediction</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Yield Prediction</h1>
+        <form id="predict-form">
+            <div class="form-group">
+                <label for="crop-type">Crop Type</label>
+                <select id="crop-type" required>
+                    <option value="Wheat">Wheat</option>
+                    <option value="Rice">Rice</option>
+                    <option value="Maize">Maize</option>
+                    <option value="Potato">Potato</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="soil-type">Soil Type</label>
+                <select id="soil-type" required>
+                    <option value="Loamy">Loamy</option>
+                    <option value="Sandy">Sandy</option>
+                    <option value="Clay">Clay</option>
+                    <option value="Silt">Silt</option>
+                    <option value="Peat">Peat</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rainfall">Rainfall (mm)</label>
+                <input type="number" id="rainfall" required min="0" max="5000" step="0.1">
+            </div>
+            <div class="form-group">
+                <label for="temperature">Temperature (°C)</label>
+                <input type="number" id="temperature" required min="-20" max="50" step="0.1">
+            </div>
+            <button type="submit" class="predict-button">Predict Yield</button>
+        </form>
+        <div id="prediction-result"></div>
+    </div>
+    <script src="../static/predict.js"></script>
+</body>
+</html>

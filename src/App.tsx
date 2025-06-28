@@ -9,8 +9,10 @@ import Marketplace from "./pages/Marketplace";
 import Favorites from "./pages/Favorites";
 import Weather from "./pages/Weather";
 import Chat from "./components/ChatF";
-import Predict from "./components/Predict";
-import StaticFeedbackForm from "./components/feedback-form";// FeedbackDisplay"; // ✅ Imported FeedbackDisplay
+import Predict from "./components/YieldPredict";
+import StaticFeedbackForm from "./components/feedback-form";
+import PredictionForm from "./components/PredictionForm";
+// FeedbackDisplay"; // ✅ Imported FeedbackDisplay
 
 function App() {
   return (
@@ -28,7 +30,9 @@ function App() {
             <Route path="/weather" element={<Weather />} />
             <Route path="/community" element={<Chat />} />
             <Route path="/predict" element={<Predict />} />
-            <Route path="/feedback" element={<StaticFeedbackForm />} /> {/* ✅ Added Feedback Page */}
+            <Route path="/feedback" element={<StaticFeedbackForm />} />
+            <Route path="/predict" element={<PredictionForm />} />
+             {/* ✅ Added Feedback Page */}
           </Routes>
         </main>
         <Chatbot /> {/* ✅ Chatbot is always rendered */}

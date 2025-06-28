@@ -1,4 +1,4 @@
-import  { create } from 'zustand';
+import { create } from 'zustand';
 import { type Product } from '../types';
 
 interface CartItem extends Product {
@@ -16,41 +16,62 @@ interface CartState {
 
 export const useCartStore = create<CartState>((set, get) => ({
   items: [],
+  total: 0,
+
   addItem: (product, quantity) => {
     set((state) => {
       const existingItem = state.items.find((item) => item.id === product.id);
+      let newItems: CartItem[];
+
       if (existingItem) {
-        return {
-          items: state.items.map((item) =>
-            item.id === product.id
-              ? { ...item, cartQuantity: item.cartQuantity + quantity }
-              : item
-          ),
-        };
+        newItems = state.items.map((item) =>
+          item.id === product.id
+            ? { ...item, cartQuantity: item.cartQuantity + quantity }
+            : item
+        );
+      } else {
+        newItems = [...state.items, { ...product, cartQuantity: quantity }];
       }
+
       return {
-        items: [...state.items, { ...product, cartQuantity: quantity }],
+        items: newItems,
+        total: newItems.reduce(
+          (sum, item) => sum + item.price * item.cartQuantity,
+          0
+        ),
       };
     });
   },
+
   removeItem: (productId) => {
-    set((state) => ({
-      items: state.items.filter((item) => item.id !== productId),
-    }));
+    set((state) => {
+      const newItems = state.items.filter((item) => item.id !== productId);
+      return {
+        items: newItems,
+        total: newItems.reduce(
+          (sum, item) => sum + item.price * item.cartQuantity,
+          0
+        ),
+      };
+    });
   },
+
   updateQuantity: (productId, quantity) => {
-    set((state) => ({
-      items: state.items.map((item) =>
+    set((state) => {
+      const newItems = state.items.map((item) =>
         item.id === productId ? { ...item, cartQuantity: quantity } : item
-      ),
-    }));
+      );
+      return {
+        items: newItems,
+        total: newItems.reduce(
+          (sum, item) => sum + item.price * item.cartQuantity,
+          0
+        ),
+      };
+    });
   },
-  clearCart: () => set({ items: [] }),
-  get total() {
-    return get().items.reduce(
-      (sum, item) => sum + item.price * item.cartQuantity,
-      0
-    );
+
+  clearCart: () => {
+    set({ items: [], total: 0 });
   },
 }));
- 
