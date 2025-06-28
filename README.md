@@ -1,4 +1,4 @@
-# AgroBazar
+# AgroBazaar
 
 ## Introduction
 Small-scale farmers form the backbone of global food production, contributing significantly to food security and rural economies. However, they face numerous barriers that hinder their ability to thrive in the marketplace. A major issue is their limited access to fair markets, lack of price transparency, and challenges in directly connecting with buyers. These issues result in low profitability, economic instability, and an inability to scale their agricultural operations.
